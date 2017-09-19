@@ -1,0 +1,16 @@
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\bin\Debug\Deposito_TG.exe.config
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\bin\Debug\Deposito_TG.exe
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\bin\Debug\Deposito_TG.pdb
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.csprojResolveAssemblyReference.cache
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.frmBem.resources
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.frmCliente.resources
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.frmPedido.resources
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.frmPrincipal.resources
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.frmAtendente.resources
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.frmProduto.resources
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.frmVendedor.resources
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.Properties.Resources.resources
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.csproj.GenerateResource.Cache
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.exe
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.pdb
+C:\Fatec\Individual\Deposito_TG\Deposito_TG\obj\Debug\Deposito_TG.frmAdicionarAluguel.resources
