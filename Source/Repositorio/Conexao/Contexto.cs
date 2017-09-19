@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Concessionaria.Repositorio
+namespace Deposito_TG.Repositorio
 {
     class Contexto : IDisposable
     {
@@ -10,7 +10,7 @@ namespace Concessionaria.Repositorio
 
         public Contexto()
         {
-            minhaConexao = new SqlConnection(@"data source=PC-RAFAEL\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=CONCESSIONARIA");
+            minhaConexao = new SqlConnection(@"data source=PC-RAFAEL\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=DepositoTG");
             minhaConexao.Open();
         }        
 
@@ -33,20 +33,3 @@ namespace Concessionaria.Repositorio
         }        
     }
 }
-
-//public void ExecutaComando(string query)
-//{
-//    var cmdComando = new SqlCommand
-//    {
-//        CommandText = query,
-//        CommandType = CommandType.Text,
-//        Connection = minhaConexao
-//    };
-//    cmdComando.ExecuteNonQuery();
-//}
-
-//public SqlDataReader ExecutaComandoComRetorno(string query)
-//{
-//    var cmdComando = new SqlCommand(query, minhaConexao);
-//    return cmdComando.ExecuteReader();
-//}
