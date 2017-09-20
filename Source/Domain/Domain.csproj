@@ -43,6 +43,7 @@
     <Compile Include="Atendente.cs" />
     <Compile Include="BemAlugavel.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Interfaces\IRepositorio.cs" />
     <Compile Include="ItemAlugavel.cs" />
     <Compile Include="Itens.cs" />
     <Compile Include="Pedido.cs" />
