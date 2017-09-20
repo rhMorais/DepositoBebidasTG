@@ -12,7 +12,7 @@ CREATE PROCEDURE [dbo].[TGDB_VendedorInserir]
 
 	/*
 	Documentação
-	Arquivo Fonte.....: Vendedor.sql
+	Arquivo Fonte.....: SP_Vendedor.sql
 	Objetivo..........: Inserir um vendedor
 	Autor.............: Rafael Morais
  	Data..............: 19/09/2017
@@ -41,7 +41,7 @@ CREATE PROCEDURE [dbo].[TGDB_VendedorEditar]
 
 	/*
 	Documentação
-	Arquivo Fonte.....: Vendedor.sql
+	Arquivo Fonte.....: SP_Vendedor.sql
 	Objetivo..........: Editar um vendedor
 	Autor.............: Rafael Morais
  	Data..............: 19/09/2017
@@ -70,7 +70,7 @@ CREATE PROCEDURE [dbo].[TGDB_VendedorExcluir]
 
 	/*
 	Documentação
-	Arquivo Fonte.....: Vendedor.sql
+	Arquivo Fonte.....: SP_Vendedor.sql
 	Objetivo..........: Excluir um vendedor
 	Autor.............: Rafael Morais
  	Data..............: 19/09/2017
@@ -94,7 +94,7 @@ CREATE PROCEDURE [dbo].[TGDB_VendedorListar]
 
 	/*
 	Documentação
-	Arquivo Fonte.....: Vendedor.sql
+	Arquivo Fonte.....: SP_Vendedor.sql
 	Objetivo..........: Excluir um vendedor
 	Autor.............: Rafael Morais
  	Data..............: 19/09/2017

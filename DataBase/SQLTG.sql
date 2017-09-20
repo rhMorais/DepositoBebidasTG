@@ -99,8 +99,7 @@ create table Pedido(
 		constraint fk_pe1 foreign key references Atendente(idaten), 
 	idcli int
 		constraint fk_pe2 foreign key references Cliente(idcli)
-	) 
-
+	) 	
 insert into Pedido values
 	('nda', 0, 0, 1, 1),
 	('nda', 0, 0, 2, 2),
@@ -117,7 +116,7 @@ create table Aluguel_bem(
 	inicio date, 
 	fim date
 	)
-
+	
 insert into Aluguel_bem values 
 	( 1, 1, 0, 0, '23/05/2010', '24/05/2010'),
 	( 2, 2, 0, 0, '23/04/2010', '25/04/2010')
@@ -130,6 +129,7 @@ create table Pedido_produto(
 	qtde int,
 	total money
 	)
+	
 insert into pedido_produto values
 	( 1, 2, 0, 0),
 	( 2, 1, 0, 0),
