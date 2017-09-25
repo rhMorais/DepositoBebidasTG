@@ -4,16 +4,19 @@ namespace Domain
 {
     public class Pedido
     {
-        public Pedido(int idPed, string observacao, decimal desconto, decimal vlTotal, Atendente atendente, Cliente cliente, IEnumerable<Itens> itens, IEnumerable<ItemAlugavel> itensAlugaveis)
+        public Pedido(int idPed, string observacao, decimal desconto, decimal vlTotal, Atendente atendente, Cliente cliente)
         {
             IdPed = idPed;
             Observacao = observacao;
             Desconto = desconto;            
             Atendente = atendente;
-            Cliente = cliente;
-            Itens = itens;
-            ItensAlugaveis = itensAlugaveis;
+            Cliente = cliente;         
             VlTotal = vlTotal;
+        }
+
+        public Pedido(int idPed)
+        {
+            IdPed = idPed;
         }
 
         public int IdPed { get; set; }

@@ -15,6 +15,11 @@
             Email = email;
         }
 
+        public Cliente(string nome)
+        {
+            Nome = nome;
+        }
+
         public int IdCli { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }

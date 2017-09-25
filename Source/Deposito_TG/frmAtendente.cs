@@ -1,48 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-
+using Repositorio;
+using Domain;
 
 namespace Deposito_TG
 {
     public partial class frmAtendente : Form
     {
+        AtendenteRepositorio repo = new AtendenteRepositorio();
+
         public frmAtendente()
         {
             InitializeComponent();
         }
-
         private void limpar()
         {
             txtcodigo.Clear();
             txtnome.Clear();
             txtcodigo.Focus();
         }
-
         private void DgvDados()
-        { //traz os dados da tabela para o dgv, conforme o select feito
-            Conexao.Active(true);
+        {
             try
             {
-                //Trazer tabela do banco para DGV
-                DataTable dt = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter("select * from atendente", Conexao.SqlCnn);
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    dgvatendente.DataSource = dt;
-                }
+                dgvatendente.DataSource = repo.Listar().ToList();
             }
-            finally
+            catch (Exception ex)
             {
-                Conexao.Active(false);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -54,28 +40,20 @@ namespace Deposito_TG
         private void dgvatendente_DoubleClick(object sender, EventArgs e)
         {
             if (dgvatendente.RowCount > 0 && dgvatendente.SelectedRows.Count == 1)
-            {
-                int ateCodigo = Convert.ToInt32(dgvatendente.SelectedRows[0].Cells[Codigo.Name].Value);
-                string sql = "SELECT * FROM atendente "
-                           + "WHERE idaten = " + ateCodigo;
+            {                
                 try
                 {
-                    Conexao.Active(true);
-                    SqlCommand cmd = new SqlCommand(sql, Conexao.SqlCnn);
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    if (dr.Read())
-                    {
-                        txtcodigo.Text = dr["idaten"].ToString();
-                        txtnome.Text = dr["nome"].ToString();
-                        tbcatendente.SelectedIndex = 1;
-                        txtnome.Focus();
-                    }
-                }
-                finally
+                    int ateCodigo = Convert.ToInt32(dgvatendente.SelectedRows[0].Cells[Codigo.Name].Value);
+                    var atendente = repo.Selecionar(ateCodigo);
+                    txtcodigo.Text = atendente.IdAten.ToString();
+                    txtnome.Text = atendente.Nome;
+                    tbcatendente.SelectedIndex = 1;
+                    btnincluir.Enabled = false;
+                    txtnome.Focus();
+                }catch(Exception ex)
                 {
-                    Conexao.Active(false);
-                }
+                    MessageBox.Show(ex.Message);
+                }                
             }
             else
             {
@@ -107,14 +85,11 @@ namespace Deposito_TG
 
         private void btnincluir_Click(object sender, EventArgs e)
         {
-            string strIncluir = "INSERT INTO atendente"
-                                + " VALUES('" + txtnome.Text + "')";
-            Conexao.Active(true);
+            Atendente atendente = new Atendente(txtnome.Text);
             try
             {
-                SqlCommand cmd = new SqlCommand(strIncluir, Conexao.SqlCnn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro incluído com sucesso !!!");
+                repo.Salvar(atendente);
+                MessageBox.Show("Atendente inserido com sucesso !!!");
                 limpar();
                 txtnome.Focus();
             }
@@ -122,45 +97,35 @@ namespace Deposito_TG
             {
                 MessageBox.Show(ex.Message);
             }
-            Conexao.Active(false);
         }
 
         private void btngravar_Click(object sender, EventArgs e)
         {
-            string strAlterar = "UPDATE atendente "
-                             + " SET nome = '" + txtnome.Text
-                             + "' WHERE idaten = " + txtcodigo.Text;
-            Conexao.Active(true);
+            Atendente atendente = new Atendente(Convert.ToInt32(txtcodigo.Text), txtnome.Text);
             try
             {
-                SqlCommand cmd = new SqlCommand(strAlterar, Conexao.SqlCnn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro gravado com sucesso !!!");
+                repo.Salvar(atendente);
+                MessageBox.Show("Atendente editado com sucesso !!!");
                 limpar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            Conexao.Active(false);
         }
 
         private void btnexcluir_Click(object sender, EventArgs e)
         {
-            string strDelete = "DELETE FROM atendente WHERE idaten = " + txtcodigo.Text;
-            Conexao.Active(true);
             try
             {
-                SqlCommand cmd = new SqlCommand(strDelete, Conexao.SqlCnn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro excluído com sucesso !!!");
+                repo.Excluir(Convert.ToInt32(txtcodigo.Text));
+                MessageBox.Show("Atendente excluído com sucesso !!!");
                 limpar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            Conexao.Active(false);
         }
 
         private void btnlimpar_Click(object sender, EventArgs e)

@@ -20,3 +20,13 @@ C:\Users\Rafael\Desktop\DepositoBebidasTG\Deposito_TG\obj\Debug\Deposito_TG.pdb
 C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Deposito_TG.exe.config
 C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\obj\Debug\Deposito_TG.exe
 C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\obj\Debug\Deposito_TG.pdb
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\obj\Debug\Deposito_TG.csprojResolveAssemblyReference.cache
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\obj\Debug\Deposito_TG.frmAtendente.resources
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\obj\Debug\Deposito_TG.Properties.Resources.resources
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\obj\Debug\Deposito_TG.csproj.GenerateResource.Cache
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Deposito_TG.exe
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Deposito_TG.pdb
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Domain.dll
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Repositorio.dll
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Domain.pdb
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Repositorio.pdb

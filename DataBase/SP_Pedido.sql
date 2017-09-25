@@ -106,12 +106,17 @@ CREATE PROCEDURE [dbo].[TGDB_PedidoListar]
 	*/
 
 	BEGIN
-		select	idobs,
-				desconto,
-				vltotal, 
-				idaten,
-				idcli 
-			from Pedido
+		select	p.idped,
+				p.idobs,
+				p.desconto,
+				p.vltotal, 								
+				a.nome, 								
+				c.nome 
+			from Pedido p inner join cliente c
+				on c.idcli = p.idcli
+						inner join atendende a
+				on a.idaten = p.idaten
+
 	END
 GO
 

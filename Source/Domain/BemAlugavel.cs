@@ -10,6 +10,11 @@
             VlAluguel = vlaluguel;
         }
 
+        public BemAlugavel(string descricao)
+        {
+            Descricao = descricao;
+        }
+
         public int IdBem { get; set; }
         public string Descricao{ get; set; }
         public string NumPatrimonio { get; set; }

@@ -11,6 +11,11 @@
             Empresa = empresa;        
         }
 
+        public Vendedor(int idVen)
+        {
+            IdVen = idVen;
+        }
+
         public int IdVen { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }

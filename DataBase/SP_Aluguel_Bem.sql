@@ -98,7 +98,7 @@ CREATE PROCEDURE [dbo].[TGDB_Aluguel_BemListar]
 	/*
 	Documentação
 	Arquivo Fonte.....: SP_Aluguel_Bem.sql
-	Objetivo..........: Excluir um Aluguel_Bem
+	Objetivo..........: Listar um Aluguel_Bem
 	Autor.............: Rafael Morais
  	Data..............: 19/09/2017
 	Ex................: EXEC [dbo].[TGDB_Aluguel_BemListar]
@@ -106,13 +106,14 @@ CREATE PROCEDURE [dbo].[TGDB_Aluguel_BemListar]
 	*/
 
 	BEGIN
-		select	idped, 
-				idbem, 
-				qtde,
-				total, 
-				inicio,
-				fim
-			from Aluguel_Bem
+		select	a.idped, 
+				b.descricao,
+				a.qtde,
+				a.total, 
+				a.inicio,
+				a.fim
+			from Aluguel_Bem a inner join Bemalugavel b
+				on a.idbem = b.idbem
 	END
 GO
 

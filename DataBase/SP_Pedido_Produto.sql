@@ -7,7 +7,7 @@ CREATE PROCEDURE [dbo].[TGDB_Pedido_ProdutoInserir]
 	@idpro int,
 	@qtde int,
 	@total money
-
+	
 	AS
 
 	/*
@@ -34,7 +34,7 @@ CREATE PROCEDURE [dbo].[TGDB_Pedido_ProdutoEditar]
 	@idped int,	
 	@idpro int,
 	@qtde int,
-	@total money
+	@total money	
 
 	AS
 
@@ -50,7 +50,7 @@ CREATE PROCEDURE [dbo].[TGDB_Pedido_ProdutoEditar]
 	BEGIN
 		update Pedido_Produto
 			set qtde = @qtde,
-				total = @total
+				total = @total				
 			where idped = @idped and idpro = @idpro
 	END
 GO
@@ -100,11 +100,12 @@ CREATE PROCEDURE [dbo].[TGDB_Pedido_ProdutoListar]
 	*/
 
 	BEGIN
-		select	idped, 
-				idpro, 
-				qtde,
-				total 				
-			from Pedido_Produto
+		select	pp.idped, 
+				p.descricao, 
+				pp.qtde,
+				pp.total 				
+			from Pedido_Produto pp inner join produto p
+				on pp.idpro = p.idpro
 	END
 GO
 

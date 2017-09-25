@@ -115,7 +115,8 @@ CREATE PROCEDURE [dbo].[TGDB_ClienteListar]
 	*/
 
 	BEGIN
-		select	nome,
+		select	idcli,
+				nome,
 				cpf,
 				endereco,
 				bairro,

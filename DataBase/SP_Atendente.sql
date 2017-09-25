@@ -99,3 +99,28 @@ CREATE PROCEDURE [dbo].[TGDB_AtendenteListar]
 	END
 GO
 
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[TGDB_AtendenteSelecionar]') AND objectproperty(id, N'IsPROCEDURE')=1)
+	DROP PROCEDURE [dbo].[TGDB_AtendenteSelecionar]
+GO
+
+CREATE PROCEDURE [dbo].[TGDB_AtendenteSelecionar]					
+	@idaten int
+	AS
+
+	/*
+	Documentação
+	Arquivo Fonte.....: SP_Atendente.sql
+	Objetivo..........: Selecionar um Atendente
+	Autor.............: Rafael Morais
+ 	Data..............: 19/09/2017
+	Ex................: EXEC [dbo].[TGDB_AtendenteSelecionar] 1
+
+	*/
+
+	BEGIN
+		select	nome,
+				idaten
+			from Atendente
+			where idaten = @idaten
+	END
+GO
