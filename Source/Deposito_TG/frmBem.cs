@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Repositorio;
 
 namespace Deposito_TG
 {
     public partial class frmBem : Form
     {
+        BemAlugavelRepositorio _repo = new BemAlugavelRepositorio();
+
         public frmBem()
         {
             InitializeComponent();
@@ -22,29 +25,15 @@ namespace Deposito_TG
         {
             txtcodigo.Clear();
             txtdescricao.Clear();
-            txtpatrimonio.Clear();
-            txtvaloraluguel.Clear();
+            txtnumpatrimonio.Clear();
+            txtvlaluguel.Clear();
             txtdescricao.Focus();
         }
 
         private void DgvDados()
-        { //traz os dados da tabela para o dgv, conforme o select feito
-            Conexao.Active(true);
-            try
-            {
-                //Trazer tabela do banco para DGV
-                DataTable dt = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter("select * from bemalugavel", Conexao.SqlCnn);
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    dgvbem.DataSource = dt;
-                }
-            }
-            finally
-            {
-                Conexao.Active(false);
-            }
+        {
+            try { dgvbem.DataSource = _repo.Listar().ToList(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void frmBem_Load(object sender, EventArgs e)
@@ -54,53 +43,30 @@ namespace Deposito_TG
 
         private void dgvbem_DoubleClick(object sender, EventArgs e)
         {
-            if (dgvbem.RowCount > 0 && dgvbem.SelectedRows.Count == 1)
+            try
             {
                 int bemCodigo = Convert.ToInt32(dgvbem.SelectedRows[0].Cells[Codigo.Name].Value);
-                string sql = "SELECT * FROM bemalugavel "
-                           + "WHERE idbem = " + bemCodigo;
-                try
-                {
-                    Conexao.Active(true);
-                    SqlCommand cmd = new SqlCommand(sql, Conexao.SqlCnn);
-
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    if (dr.Read())
-                    {
-                        txtcodigo.Text = dr["idbem"].ToString();
-                        txtdescricao.Text = dr["descricao"].ToString();
-                        txtpatrimonio.Text = dr["numpatrimonio"].ToString();
-                        txtvaloraluguel.Text = dr["vlaluguel"].ToString();                        
-                        tbcbem.SelectedIndex = 1;
-                        txtdescricao.Focus();
-                    }
-                }
-                finally
-                {
-                    Conexao.Active(false);
-                }
+                var bem = _repo.Selecionar(bemCodigo);
+                txtcodigo.Text = bem.IdBem.ToString();
+                txtdescricao.Text = bem.Descricao;
+                txtnumpatrimonio.Text = bem.NumPatrimonio;
+                tbcbem.SelectedIndex = 1;
+                btnincluir.Enabled = false;
+                txtdescricao.Focus();
             }
-            else
-            {
-                MessageBox.Show("Nenhum registro selecionado!");
-            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void tbcbem_Selected(object sender, TabControlEventArgs e)
         {
-            if (tbcbem.SelectedIndex == 0)//tbclistagempais.SelectedTab == tbplistagem
-            {
+            if (tbcbem.SelectedIndex == 0)
                 DgvDados();
-            }
         }
 
         private void frmBem_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-                this.SelectNextControl(this.ActiveControl,
-                    !e.Shift, true, true, true);
-            }
+                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
         }
 
         private void btnvoltar_Click(object sender, EventArgs e)
@@ -110,64 +76,17 @@ namespace Deposito_TG
 
         private void btnincluir_Click(object sender, EventArgs e)
         {
-            string strIncluir = "INSERT INTO bemalugavel"
-                                + " VALUES('" + txtdescricao.Text + "',"
-                                + " '" + txtpatrimonio.Text + "',"
-                                + " '" + (txtvaloraluguel.Text).Replace(",", ".") + "')";
-            Conexao.Active(true);
-            try
-            {
-                SqlCommand cmd = new SqlCommand(strIncluir, Conexao.SqlCnn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro incluído com sucesso !!!");
-                limpar();
-                txtdescricao.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            Conexao.Active(false);
+            
         }
 
         private void btngravar_Click(object sender, EventArgs e)
         {
-            string strAlterar = "UPDATE bemalugavel "
-                             + " SET descricao = '" + txtdescricao.Text + "', "
-                             + "numpatrimonio = '" + txtpatrimonio.Text + "', "
-                             + "vlaluguel = '" + (txtvaloraluguel.Text).Replace(",", ".") + "' "
-                             + "WHERE idbem = " + txtcodigo.Text;
-            Conexao.Active(true);
-            try
-            {
-                SqlCommand cmd = new SqlCommand(strAlterar, Conexao.SqlCnn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro gravado com sucesso !!!");
-                limpar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            Conexao.Active(false);
+            
         }
 
         private void btnexcluir_Click(object sender, EventArgs e)
         {
-            string strDelete = "DELETE FROM bemalugavel WHERE idbem = " + txtcodigo.Text;
-            Conexao.Active(true);
-            try
-            {
-                SqlCommand cmd = new SqlCommand(strDelete, Conexao.SqlCnn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro excluído com sucesso !!!");
-                limpar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            Conexao.Active(false);
+            
         }
 
         private void btnlimpar_Click(object sender, EventArgs e)

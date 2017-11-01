@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Deposito_TG
@@ -20,10 +13,9 @@ namespace Deposito_TG
         {
             if (MessageBox.Show("Deseja realmente sair?", "Confirmação",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                == System.Windows.Forms.DialogResult.Yes)//completo
-            //mais simples          
+                == System.Windows.Forms.DialogResult.Yes)
             {
-                this.Close(); //fecha o formulário atual          
+                this.Close();          
             }
         }
 
@@ -57,6 +49,11 @@ namespace Deposito_TG
         {
             Form f = new frmVendedor();
             f.ShowDialog();
+        }
+
+        private void arquivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

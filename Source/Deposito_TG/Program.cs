@@ -16,7 +16,7 @@ namespace Deposito_TG
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAtendente());
+            Application.Run(new frmPrincipal());
         }
     }
 }

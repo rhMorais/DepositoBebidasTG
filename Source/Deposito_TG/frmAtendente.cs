@@ -8,7 +8,7 @@ namespace Deposito_TG
 {
     public partial class frmAtendente : Form
     {
-        AtendenteRepositorio repo = new AtendenteRepositorio();
+        AtendenteRepositorio _repo = new AtendenteRepositorio();
 
         public frmAtendente()
         {
@@ -22,14 +22,8 @@ namespace Deposito_TG
         }
         private void DgvDados()
         {
-            try
-            {
-                dgvatendente.DataSource = repo.Listar().ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            try { dgvatendente.DataSource = _repo.Listar().ToList(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message);}
         }
 
         private void frmAtendente_Load(object sender, EventArgs e)
@@ -44,7 +38,7 @@ namespace Deposito_TG
                 try
                 {
                     int ateCodigo = Convert.ToInt32(dgvatendente.SelectedRows[0].Cells[Codigo.Name].Value);
-                    var atendente = repo.Selecionar(ateCodigo);
+                    var atendente = _repo.Selecionar(ateCodigo);
                     txtcodigo.Text = atendente.IdAten.ToString();
                     txtnome.Text = atendente.Nome;
                     tbcatendente.SelectedIndex = 1;
@@ -88,7 +82,7 @@ namespace Deposito_TG
             Atendente atendente = new Atendente(txtnome.Text);
             try
             {
-                repo.Salvar(atendente);
+                _repo.Salvar(atendente);
                 MessageBox.Show("Atendente inserido com sucesso !!!");
                 limpar();
                 txtnome.Focus();
@@ -104,7 +98,7 @@ namespace Deposito_TG
             Atendente atendente = new Atendente(Convert.ToInt32(txtcodigo.Text), txtnome.Text);
             try
             {
-                repo.Salvar(atendente);
+                _repo.Salvar(atendente);
                 MessageBox.Show("Atendente editado com sucesso !!!");
                 limpar();
             }
@@ -118,7 +112,7 @@ namespace Deposito_TG
         {
             try
             {
-                repo.Excluir(Convert.ToInt32(txtcodigo.Text));
+                _repo.Excluir(Convert.ToInt32(txtcodigo.Text));
                 MessageBox.Show("Atendente excluído com sucesso !!!");
                 limpar();
             }
