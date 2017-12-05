@@ -101,6 +101,7 @@
             this.dgvprodutos.Location = new System.Drawing.Point(3, 3);
             this.dgvprodutos.MultiSelect = false;
             this.dgvprodutos.Name = "dgvprodutos";
+            this.dgvprodutos.ReadOnly = true;
             this.dgvprodutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvprodutos.Size = new System.Drawing.Size(881, 439);
             this.dgvprodutos.TabIndex = 0;
@@ -111,23 +112,27 @@
             this.Codigo.DataPropertyName = "idpro";
             this.Codigo.HeaderText = "Código";
             this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
             // 
             // Nome
             // 
             this.Nome.DataPropertyName = "descricao";
             this.Nome.HeaderText = "Descrição";
             this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "preco";
             this.Column1.HeaderText = "Preço";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Vendedor";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // tabPage2
             // 

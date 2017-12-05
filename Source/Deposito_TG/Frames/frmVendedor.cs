@@ -6,23 +6,22 @@ using System.Windows.Forms;
 
 namespace Deposito_TG
 {
-    public partial class frmVendedor : Form
+    public partial class FrmVendedor : Form
     {
-        VendedorRepositorio _repo = new VendedorRepositorio();
-        bool backProdutos = false;
-        public frmVendedor()
+        private readonly VendedorRepositorio _repo = new VendedorRepositorio();
+        bool _backProdutos;
+
+        public FrmVendedor()
         {
             InitializeComponent();
-            btnexcluir.Enabled = false;
-            btngravar.Enabled = false;
+            ModoIncluir();
         }
-        public frmVendedor(bool aba)
+        public FrmVendedor(bool aba)
         {
             InitializeComponent();
-            btnexcluir.Enabled = false;
-            btngravar.Enabled = false;
-            backProdutos = true;
+            _backProdutos = true;
             tbcvendedores.SelectedIndex = 1;
+            ModoIncluir();
         }
 
         private void Limpar()
@@ -37,35 +36,32 @@ namespace Deposito_TG
             btnincluir.Enabled = true;
             txtnome.Focus();
         }
+
         private void DgvDados()
         {
             try { dgvvendedores.DataSource = _repo.Listar().ToList(); }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
+
         private void frmVendedor_Load(object sender, EventArgs e)
         {
             DgvDados();
             txtnome.Focus();
         }
+
         private void dgvvendedores_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                int venCodigo = Convert.ToInt32(dgvvendedores.SelectedRows[0].Cells[Codigo.Name].Value);
-                var vendedor = _repo.Selecionar(venCodigo);
-                txtcodigo.Text = vendedor.IdVen.ToString();
-                txtnome.Text = vendedor.Nome;
-                mskcelular.Text = vendedor.Celular;
-                msktelefone.Text = vendedor.Telefone;
-                txtempresa.Text = vendedor.Empresa;
+                var venCodigo = Convert.ToInt32(dgvvendedores.SelectedRows[0].Cells[Codigo.Name].Value);
+                PreencherCampos(_repo.Selecionar(venCodigo));
                 tbcvendedores.SelectedIndex = 1;
-                btnincluir.Enabled = false;
-                btnexcluir.Enabled = true;
-                btngravar.Enabled = true;
+                ModoEditar();
                 txtnome.Focus();
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
+
         private void tbcvendedores_Selected(object sender, TabControlEventArgs e)
         {
             if (tbcvendedores.SelectedIndex == 0)
@@ -75,41 +71,39 @@ namespace Deposito_TG
             }
             txtnome.Focus();
         }
+
         private void frmVendedor_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+                SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
         }
+
         private void btnvoltar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
+
         private void btnincluir_Click(object sender, EventArgs e)
-        {
-            Vendedor vendedor = new Vendedor(
-                txtnome.Text, msktelefone.Text,
-                mskcelular.Text, txtempresa.Text);
+        {            
             try
             {
-                _repo.Salvar(vendedor);
+                _repo.Salvar(GetVendedor());
                 MessageBox.Show("Vendedor inserido com sucesso!");
                 Limpar();
                 txtnome.Focus();
-                if (backProdutos) { new frmProduto().ShowDialog(); }
+                if (_backProdutos) { new frmProduto().ShowDialog(); }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btngravar_Click(object sender, EventArgs e)
         {
-            Vendedor vendedor = new Vendedor(Convert.ToInt32(txtcodigo.Text), 
-                txtnome.Text, msktelefone.Text,
-                mskcelular.Text, txtempresa.Text);
             try
             {
-                _repo.Salvar(vendedor);
+                _repo.Salvar(GetVendedor());
                 MessageBox.Show("Vendedor editado com sucesso!");
             }
             catch (Exception ex)
@@ -117,6 +111,7 @@ namespace Deposito_TG
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnexcluir_Click(object sender, EventArgs e)
         {
             try
@@ -130,9 +125,46 @@ namespace Deposito_TG
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnlimpar_Click(object sender, EventArgs e)
         {
             Limpar();
+        }
+
+        private Vendedor GetVendedor()
+        {
+            var codigo = txtcodigo.Text != "" ? Convert.ToInt16(txtcodigo.Text) : 0;
+            return new Vendedor
+            (
+                codigo,
+                txtnome.Text, 
+                msktelefone.Text,
+                mskcelular.Text, 
+                txtempresa.Text
+            );
+        }
+
+        private void PreencherCampos(Vendedor vendedor)
+        {
+            txtcodigo.Text = vendedor.IdVen.ToString();
+            txtnome.Text = vendedor.Nome;
+            mskcelular.Text = vendedor.Celular;
+            msktelefone.Text = vendedor.Telefone;
+            txtempresa.Text = vendedor.Empresa;
+        }
+
+        private void ModoIncluir()
+        {
+            btngravar.Enabled = false;
+            btnexcluir.Enabled = false;
+            btnincluir.Enabled = true;
+        }
+
+        private void ModoEditar()
+        {
+            btngravar.Enabled = true;
+            btnexcluir.Enabled = true;
+            btnincluir.Enabled = false;
         }
     }
 }

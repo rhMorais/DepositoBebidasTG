@@ -10,7 +10,11 @@ namespace Deposito_TG.Repositorio
 
         public Contexto()
         {
-            minhaConexao = new SqlConnection(@"data source=PC-RAFAEL\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=DepositoTG");
+            // string de conexão do notebook
+            //minhaConexao = new SqlConnection(@"data source=PC-RAFAEL\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=DepositoTG");
+
+            //string de conexão do pc do trabalho
+            minhaConexao = new SqlConnection(@"data source=RAFAELHENRIQUE-\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=BancoDepositoTG");
             minhaConexao.Open();
         }        
 

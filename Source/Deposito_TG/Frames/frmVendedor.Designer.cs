@@ -1,6 +1,6 @@
 ﻿namespace Deposito_TG
 {
-    partial class frmVendedor
+    partial class FrmVendedor
     {
         /// <summary>
         /// Required designer variable.
@@ -311,7 +311,7 @@
             this.mskcelular.Size = new System.Drawing.Size(277, 38);
             this.mskcelular.TabIndex = 2;
             // 
-            // frmVendedor
+            // FrmVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -321,7 +321,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MinimizeBox = false;
-            this.Name = "frmVendedor";
+            this.Name = "FrmVendedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manutenção de Vendedores";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

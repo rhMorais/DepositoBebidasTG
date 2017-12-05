@@ -31,7 +31,7 @@ namespace Deposito_TG
         }
         private void manutençãoDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form f = new frmPedido();
+            Form f = new FrmPedido();
             f.ShowDialog();
         }
         private void manutençãoDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace Deposito_TG
 
         private void manutençãoDeVendedoresToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            Form f = new frmVendedor();
+            Form f = new FrmVendedor();
             f.ShowDialog();
         }
 

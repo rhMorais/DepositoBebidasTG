@@ -1,7 +1,6 @@
 ﻿using Domain;
 using Repositorio;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -9,13 +8,13 @@ namespace Deposito_TG
 {
     public partial class frmProduto : Form
     {
-        ProdutoRepositorio _repo = new ProdutoRepositorio();
-        VendedorRepositorio _repoVendedor = new VendedorRepositorio();
+        private readonly ProdutoRepositorio _repo = new ProdutoRepositorio();
+        private readonly VendedorRepositorio _repoVendedor = new VendedorRepositorio();
 
         public frmProduto()
         {
             InitializeComponent();
-            modoIncluir();
+            ModoIncluir();
         }
 
         private void Limpar()
@@ -24,9 +23,10 @@ namespace Deposito_TG
             txtdescricao.Clear();
             numpreco.Value = 0;
             cmbvendedor.SelectedIndex = -1;
-            modoIncluir();
+            ModoIncluir();
             txtdescricao.Focus();
         }
+
         private void DgvDados()
         {
             try { dgvprodutos.DataSource = _repo.Listar().ToList(); }
@@ -36,13 +36,13 @@ namespace Deposito_TG
         private void frmProduto_Load(object sender, EventArgs e)
         {
             DgvDados();
-            carregarVendedores();
+            CarregarVendedores();
         }
 
         private void frmProduto_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+                SelectNextControl(ActiveControl, !e.Shift, true, true, true);
         }
 
         private void tbcprodutos_Selected(object sender, TabControlEventArgs e)
@@ -56,10 +56,10 @@ namespace Deposito_TG
         {
             try
             {
-                int proCodigo = Convert.ToInt32(dgvprodutos.SelectedRows[0].Cells[Codigo.Name].Value);
+                var proCodigo = Convert.ToInt32(dgvprodutos.SelectedRows[0].Cells[Codigo.Name].Value);
                 PreencherCampos(_repo.Selecionar(proCodigo));
                 tbcprodutos.SelectedIndex = 1;
-                modoEditar();
+                ModoEditar();
                 txtdescricao.Focus();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -69,7 +69,7 @@ namespace Deposito_TG
         {
             try
             {
-                _repo.Salvar(getProduto());
+                _repo.Salvar(GetProduto());
                 MessageBox.Show("Produto inserido com sucesso!");
                 Limpar();
             }
@@ -80,7 +80,7 @@ namespace Deposito_TG
         {
             try
             {
-                _repo.Salvar(getProduto());
+                _repo.Salvar(GetProduto());
                 MessageBox.Show("Produto editado com sucesso!");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -105,7 +105,7 @@ namespace Deposito_TG
         private void btnnovovendedor_Click(object sender, EventArgs e)
         {
             Close();
-            new frmVendedor(true).ShowDialog();
+            new FrmVendedor(true).ShowDialog();
         }
 
         private void btnlimpar_Click(object sender, EventArgs e)
@@ -113,29 +113,25 @@ namespace Deposito_TG
             Limpar();
         }
 
-        private void carregarVendedores()
+        private void CarregarVendedores()
         {
             try
             {
                 var vendedores = _repoVendedor.Listar();
-                Dictionary<string, int> p = new Dictionary<string, int>();
-                foreach (var vendedor in vendedores)
-                {
-                    p.Add($"{vendedor.Nome} - {vendedor.Empresa}", vendedor.IdVen);
-                }
-                this.cmbvendedor.DataSource = new BindingSource(p, null);
-                this.cmbvendedor.DisplayMember = "key";
-                this.cmbvendedor.ValueMember = "value";
+                var p = vendedores.ToDictionary(vendedor => $"{vendedor.Nome} - {vendedor.Empresa}", vendedor => vendedor.IdVen);
+                cmbvendedor.DataSource = new BindingSource(p, null);
+                cmbvendedor.DisplayMember = "key";
+                cmbvendedor.ValueMember = "value";
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void indexVendedorSelecionado(int idpro)
+        private void IndexVendedorSelecionado(int idpro)
         {
-            for (var i = 0; i <= this.cmbvendedor.Items.Count - 1; i++)
+            for (var i = 0; i <= cmbvendedor.Items.Count - 1; i++)
             {
-                this.cmbvendedor.SelectedIndex = i;
-                if ((int)this.cmbvendedor.SelectedValue == idpro)
+                cmbvendedor.SelectedIndex = i;
+                if ((int)cmbvendedor.SelectedValue == idpro)
                     return;
             }
         }
@@ -146,7 +142,7 @@ namespace Deposito_TG
             udb.Select(0, udb.Text.Length);
         }
 
-        private Produto getProduto()
+        private Produto GetProduto()
         {
             var codigo = txtcodigo.Text != "" ? Convert.ToInt16(txtcodigo.Text) : 0;
             return new Produto
@@ -170,16 +166,16 @@ namespace Deposito_TG
             txtcodigo.Text = produto.Descricao;
             txtdescricao.Text = produto.Descricao;
             numpreco.Value = produto.Preco;
-            indexVendedorSelecionado(produto.IdPro);
+            IndexVendedorSelecionado(produto.IdPro);
         }
        
-        private void modoIncluir()
+        private void ModoIncluir()
         {
             btngravar.Enabled = false;
             btnexcluir.Enabled = false;
             btnincluir.Enabled = true;
         }
-        private void modoEditar()
+        private void ModoEditar()
         {
             btngravar.Enabled = true;
             btnexcluir.Enabled = true;
@@ -187,4 +183,4 @@ namespace Deposito_TG
         }
     }
 }
-}
+
