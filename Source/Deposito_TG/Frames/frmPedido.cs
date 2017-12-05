@@ -14,6 +14,7 @@ namespace Deposito_TG
         private readonly ClienteRepositorio _repoClientes = new ClienteRepositorio();
         private static readonly ProdutoRepositorio RepoProdutos = new ProdutoRepositorio();
         private readonly AtendenteRepositorio _repoAtendentes = new AtendenteRepositorio();
+        private List<Itens> _listaItens = new List<Itens>();
 
         private readonly List<Produto> _listaDeProdutos = RepoProdutos.Listar().ToList(); 
 
@@ -194,6 +195,17 @@ namespace Deposito_TG
         {
             if ((int)e.KeyCode <= 48 || (int)e.KeyCode >= 57) return;
             IndexComboSelecionado(Convert.ToInt32(txtcodigoproduto.Text), cboproduto );
+        }
+
+        private void btnincluir_Click_1(object sender, EventArgs e)
+        {
+            var item = new Itens( 
+                _listaDeProdutos.First(x => x.IdPro == Convert.ToInt32(txtcodigoproduto.Text)),
+                Convert.ToInt32(txtquantidadeproduto.Text),
+                Convert.ToDecimal(txttotalproduto.Text)
+                );
+            _listaItens.Add(item);
+            dgvItens.DataSource = _listaItens;
         }
     }
 }

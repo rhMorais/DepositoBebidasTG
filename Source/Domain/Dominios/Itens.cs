@@ -14,5 +14,12 @@
             Quantidade = quantidade;
             Total = total;
         }
+
+        public Itens(Produto produto, int quantidade, decimal total)
+        {
+            Produto = produto;
+            Quantidade = quantidade;
+            Total = total;
+        }
     }
 }

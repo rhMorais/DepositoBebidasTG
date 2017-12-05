@@ -20,6 +20,12 @@
             Preco = preco;
             Vendedor = vendedor;
         }
+        public Produto(int idPro, string descricao, decimal preco)
+        {
+            IdPro = idPro;
+            Descricao = descricao;
+            Preco = preco;
+        }
         public Produto(string descricao) { Descricao = descricao; }
         public Produto() { }
     }
