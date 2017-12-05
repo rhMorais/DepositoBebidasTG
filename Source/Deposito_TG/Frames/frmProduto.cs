@@ -29,7 +29,17 @@ namespace Deposito_TG
 
         private void DgvDados()
         {
-            try { dgvprodutos.DataSource = _repo.Listar().ToList(); }
+            try
+            {
+                var list = _repo.Listar().Select(x => new
+                {
+                    idpro = x.IdPro,
+                    descricao = x.Descricao,
+                    preco = $"R$ {x.Preco:0,0.00}",
+                    vendedor = x.Vendedor.Nome
+                }).ToList();
+                dgvprodutos.DataSource = list;
+            }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 

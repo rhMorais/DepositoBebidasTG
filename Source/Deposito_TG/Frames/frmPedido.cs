@@ -81,22 +81,7 @@ namespace Deposito_TG
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void btnincluir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btngravar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnexcluir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnnovocliente_Click(object sender, EventArgs e)
+        private void btnNovoCliente_Click_1(object sender, EventArgs e)
         {
             Form f = new frmCliente();
             f.Show();
@@ -205,7 +190,25 @@ namespace Deposito_TG
                 Convert.ToDecimal(txttotalproduto.Text)
                 );
             _listaItens.Add(item);
-            dgvItens.DataSource = _listaItens;
+
+            var list = _listaItens.Select(x => new
+            {
+                idPro = x.Produto.IdPro,
+                descricao = x.Produto.Descricao,
+                quantidade = x.Quantidade,
+                precounitario = $"R$ {x.Produto.Preco:0,0.00}",
+                total = $"R$ {x.Total:0,0.00}"
+            }).ToList();
+
+            txtvalortotal.Text = $"R$ {_listaItens.Sum(x => x.Total):0,0.00}";
+            dgvItens.DataSource = list;
         }
+
+        private void btnexcluir_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

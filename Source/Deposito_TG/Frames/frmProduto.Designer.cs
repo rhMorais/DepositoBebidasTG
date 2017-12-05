@@ -31,10 +31,6 @@
             this.tbcprodutos = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvprodutos = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.numpreco = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,6 +47,10 @@
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbcprodutos.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvprodutos)).BeginInit();
@@ -106,33 +106,6 @@
             this.dgvprodutos.Size = new System.Drawing.Size(881, 439);
             this.dgvprodutos.TabIndex = 0;
             this.dgvprodutos.DoubleClick += new System.EventHandler(this.dgvprodutos_DoubleClick);
-            // 
-            // Codigo
-            // 
-            this.Codigo.DataPropertyName = "idpro";
-            this.Codigo.HeaderText = "Código";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "descricao";
-            this.Nome.HeaderText = "Descrição";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "preco";
-            this.Column1.HeaderText = "Preço";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Vendedor";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -312,6 +285,34 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Código:";
             // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "idpro";
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "descricao";
+            this.Nome.HeaderText = "Descrição";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "preco";
+            this.Column1.HeaderText = "Preço";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "vendedor";
+            this.Column2.HeaderText = "Vendedor";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // frmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -357,11 +358,11 @@
         private System.Windows.Forms.Button btnnovovendedor;
         private System.Windows.Forms.ComboBox cmbvendedor;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numpreco;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numpreco;
     }
 }
