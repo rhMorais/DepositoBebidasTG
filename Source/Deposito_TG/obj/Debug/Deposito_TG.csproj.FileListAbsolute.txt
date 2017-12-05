@@ -37,3 +37,5 @@ C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\obj\Debug\Deposito_
 C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\obj\Debug\Deposito_TG.pdb
 C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Deposito_TG.exe.config
 C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Deposito_TG.pdb
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Services.dll
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Deposito_TG\bin\Debug\Services.pdb

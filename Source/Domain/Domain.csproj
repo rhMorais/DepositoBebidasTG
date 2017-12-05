@@ -40,16 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Atendente.cs" />
-    <Compile Include="BemAlugavel.cs" />
-    <Compile Include="Cliente.cs" />
+    <Compile Include="Dominios\Atendente.cs" />
+    <Compile Include="Dominios\BemAlugavel.cs" />
+    <Compile Include="Dominios\Cliente.cs" />
     <Compile Include="Interfaces\IRepositorio.cs" />
-    <Compile Include="ItemAlugavel.cs" />
-    <Compile Include="Itens.cs" />
-    <Compile Include="Pedido.cs" />
-    <Compile Include="Produto.cs" />
+    <Compile Include="Dominios\ItemAlugavel.cs" />
+    <Compile Include="Dominios\Itens.cs" />
+    <Compile Include="Dominios\Pedido.cs" />
+    <Compile Include="Dominios\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vendedor.cs" />
+    <Compile Include="Dominios\Vendedor.cs" />
+    <Compile Include="Response.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -112,3 +112,31 @@ CREATE PROCEDURE [dbo].[TGDB_VendedorListar]
 	END
 GO
 
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[TGDB_VendedorSelecionar]') AND objectproperty(id, N'IsPROCEDURE')=1)
+	DROP PROCEDURE [dbo].[TGDB_VendedorSelecionar]
+GO
+CREATE PROCEDURE [dbo].[TGDB_VendedorSelecionar] 
+    @idven int
+	AS
+	
+	/*
+	Documentação
+	Arquivo Fonte.....: SP_Vendedor.sql
+	Objetivo..........: Selecionar um vendedor
+	Autor.............: Rafael Morais
+ 	Data..............: 19/09/2017
+	Ex................: EXEC [dbo].[TGDB_VendedorSelecionar]
+
+	*/
+
+    BEGIN
+		SELECT	idven,
+				nome,
+				telefone,
+				celular, 
+				empresa 												
+			FROM vendedor
+			WHERE idven = @idven
+	END 
+GO
+

@@ -46,78 +46,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAdicionarAluguel.cs">
+    <Compile Include="Frames\frmAdicionarAluguel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAdicionarAluguel.Designer.cs">
+    <Compile Include="Frames\frmAdicionarAluguel.Designer.cs">
       <DependentUpon>frmAdicionarAluguel.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAtendente.cs">
+    <Compile Include="Frames\frmAtendente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAtendente.Designer.cs">
+    <Compile Include="Frames\frmAtendente.Designer.cs">
       <DependentUpon>frmAtendente.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBem.cs">
+    <Compile Include="Frames\frmBem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBem.Designer.cs">
+    <Compile Include="Frames\frmBem.Designer.cs">
       <DependentUpon>frmBem.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCliente.cs">
+    <Compile Include="Frames\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCliente.Designer.cs">
+    <Compile Include="Frames\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPedido.cs">
+    <Compile Include="Frames\frmPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPedido.Designer.cs">
+    <Compile Include="Frames\frmPedido.Designer.cs">
       <DependentUpon>frmPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipal.cs">
+    <Compile Include="Frames\frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrincipal.Designer.cs">
+    <Compile Include="Frames\frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProduto.cs">
+    <Compile Include="Frames\frmProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProduto.Designer.cs">
+    <Compile Include="Frames\frmProduto.Designer.cs">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVendedor.cs">
+    <Compile Include="Frames\frmVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVendedor.Designer.cs">
+    <Compile Include="Frames\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAdicionarAluguel.resx">
+    <EmbeddedResource Include="Frames\frmAdicionarAluguel.resx">
       <DependentUpon>frmAdicionarAluguel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAtendente.resx">
+    <EmbeddedResource Include="Frames\frmAtendente.resx">
       <DependentUpon>frmAtendente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBem.resx">
+    <EmbeddedResource Include="Frames\frmBem.resx">
       <DependentUpon>frmBem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCliente.resx">
+    <EmbeddedResource Include="Frames\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPedido.resx">
+    <EmbeddedResource Include="Frames\frmPedido.resx">
       <DependentUpon>frmPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrincipal.resx">
+    <EmbeddedResource Include="Frames\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProduto.resx">
+    <EmbeddedResource Include="Frames\frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVendedor.resx">
+    <EmbeddedResource Include="Frames\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -147,9 +147,13 @@
       <Project>{4F8C21F4-326D-4B2B-9B70-AAA4C2B612A0}</Project>
       <Name>Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repositorio\Repositorio.csproj">
+    <ProjectReference Include="..\Repositorio\Repository.csproj">
       <Project>{F6192F50-C179-49C3-BE2D-C321F33E8621}</Project>
-      <Name>Repositorio</Name>
+      <Name>Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{c1c70cfa-8b1b-4115-b60b-c5041dd98bd0}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

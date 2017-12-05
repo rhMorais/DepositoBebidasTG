@@ -1,0 +1,7 @@
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Repositorio\bin\Debug\Repositorio.dll
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Repositorio\bin\Debug\Repositorio.pdb
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Repositorio\bin\Debug\Domain.dll
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Repositorio\bin\Debug\Domain.pdb
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Repositorio\obj\Debug\1.3 - Repository.csprojResolveAssemblyReference.cache
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Repositorio\obj\Debug\Repositorio.dll
+C:\Users\Rafael\Desktop\DepositoBebidasTG\Source\Repositorio\obj\Debug\Repositorio.pdb
